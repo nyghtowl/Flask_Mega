@@ -9,6 +9,10 @@ from models import User, ROLE_USER, ROLE_ADMIN
 def load_user(id):
     return User.query.get(int(id))
 
+@app.before_request
+def before_request():
+    g.user = current_user
+
 @app.route('/')
 @app.route('/index')
 @login_required # Restricts page access without login
@@ -29,10 +33,6 @@ def index():
         title = 'Home', 
         user = user,
         posts = posts)
-
-@app.before_request
-def before_request():
-    g.user = current_user
     
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler
