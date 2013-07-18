@@ -24,6 +24,10 @@ def index():
         user = user,
         posts = posts)
 
+@app.before_request
+def before_request():
+    g.user = current_user
+    
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler
 def login():
@@ -42,10 +46,6 @@ def login():
         form = form,
         providers = app.config['OPENID_PROVIDERS'])
 
-@app.before_request
-def before_request():
-    g.user = current_user
-    
 @oid.after_login
 def after_login(resp):
     # If no email then cannot login
