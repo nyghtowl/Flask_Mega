@@ -40,23 +40,8 @@ def index():
         title = 'Home', 
         user = user,
         posts = posts)
-  
-@app.route('/user/<nickname>')
-@login_required # Restricts page access without login
-def user(nickname):
-    user = User.query.filter_by(nickname = nickname).first()
-    if user == None:
-        flash('User' + nickname + 'not found.')
-        return redirect(url_for('index'))
-    posts = [
-        { 'author': user, 'body': 'Test post #1' },
-        { 'author': user, 'body': 'Test post #1' }
-    ]
-    return render_template("user.html", 
-        user = user,
-        posts = posts)
- 
 
+ 
 @app.route('/login', methods = ['GET', 'POST'])
 @oid.loginhandler
 def login():
@@ -101,8 +86,23 @@ def after_login(resp):
 
     return redirect(request.args.get('next') or url_for('index'))
 
-
 @app.route('/logout')
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/user/<nickname>')
+@login_required # Restricts page access without login
+def user(nickname):
+    user = User.query.filter_by(nickname = nickname).first()
+    if user == None:
+        flash('User' + nickname + 'not found.')
+        return redirect(url_for('index'))
+    posts = [
+        { 'author': user, 'body': 'Test post #1' },
+        { 'author': user, 'body': 'Test post #1' }
+    ]
+    return render_template("user.html", 
+        user = user,
+        posts = posts)
+
