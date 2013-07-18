@@ -11,6 +11,7 @@ db = SQLAlchemy(app)
 
 lm = LoginManager()
 lm.init_app(app)
+lm.login_view = 'login' # View that logs users in
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
 from app import views, models
