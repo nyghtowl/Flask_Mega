@@ -58,7 +58,7 @@ def after_login(resp):
     if resp.email is None or resp.email == "":
         flash('Invalid login. Please try again.')
         return redirect(url_for('login'))
-    user = User.query.filter_by(email = resp.email, role = ROLE_USER)
+    user = User.query.filter_by(email = resp.email).first()
 
     # If email is not found then treat like new user and generate nickname from email
     if user is None:
