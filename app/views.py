@@ -4,6 +4,11 @@ from app import app, db, lm, oid
 from forms import LoginForm
 from models import User, ROLE_USER, ROLE_ADMIN
 
+# Loads user from database
+@lm.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 @app.route('/')
 @app.route('/index')
 @login_required # Restricts page access without login
@@ -73,10 +78,6 @@ def after_login(resp):
 
     return redirect(request.args.get('next') or url_for('index'))
 
-# Loads user from database
-@lm.user_loader
-def load_user(id):
-    return User.query.get(int(id))
 
 @app.route('/logout')
 def logout():
