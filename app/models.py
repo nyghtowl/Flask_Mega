@@ -1,4 +1,5 @@
 from app import db
+from hashlib import md5
 
 ROLE_USER = 0
 ROLE_ADMIN = 1
@@ -26,6 +27,9 @@ class User(db.Model):
     # Generate unique id for user 
     def get_id(self):
         return unicode(self.id)
+
+    def avatar(self, size):
+        return 'http://www.gravatar.com/avatar' + md5(self.email).hexdigest() + '?d=mm&s' + str(size)
 
     # Used fro debugging and structures how to print objects fo this class
     def __repr__(self):
