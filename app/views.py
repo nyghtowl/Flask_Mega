@@ -6,8 +6,9 @@ from models import User, ROLE_USER, ROLE_ADMIN
 
 @app.route('/')
 @app.route('/index')
+@login_required # Restricts page access without login
 def index():
-    user = { 'nickname': 'Miguel' } # fake user
+    user = g.user
     posts = [#fake dictionary of posts
     {
         'author': {'nickname':'John'},
