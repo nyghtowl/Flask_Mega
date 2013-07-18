@@ -27,9 +27,9 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
-# Used fro debugging and structures how to print objects fo this class
-def __repr__(self):
-    return '<User %r>' % (self.nickname)
+    # Used fro debugging and structures how to print objects fo this class
+    def __repr__(self):
+        return '<User %r>' % (self.nickname)
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -37,5 +37,5 @@ class Post(db.Model):
     timestamp = db. Column(db.DateTime)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
-def __repr__(self):
-    return '<Post %r>' % (self.body)
+    def __repr__(self):
+        return '<Post %r>' % (self.body)
