@@ -42,7 +42,7 @@ def login():
         form = form,
         providers = app.config['OPENID_PROVIDERS'])
 
-@oid.after_login(resp):
+@oid.after_login
 def after_login(resp):
     # If no email then cannot login
     if resp.email is None or resp.email == "":
@@ -65,7 +65,7 @@ def after_login(resp):
         remember_me = session['remember_me']
         session_pop('remember_me', None)
     login_user(user, remember = remember_me)
-    
+
     return redirect(request.args.get('next') or url_for('index'))
 
 
