@@ -17,10 +17,7 @@ def before_request():
 @app.route('/index')
 @login_required # Restricts page access without login
 def index():
-    user = User.query.filter_by(nickname = nickname).first()
-    if user == None:
-        flash('User' +nickname + 'not found.')
-        return redirect(url_for('index'))
+    user = g.user
     posts = [#fake dictionary of posts
     {
         'author': {'nickname':'John'},
