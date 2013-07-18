@@ -25,13 +25,18 @@ def index():
         posts = posts)
 
 @app.route('/login', methods = ['GET', 'POST'])
+@oid.loginhandler
 def login():
+    if g.user is not None and g.user.is_authenticated():
+        return redirect(url_for('index'))
+
     form = LoginForm()
 
     # Following command conducts validation processing for submited form
     if form.validate_on_submit():
         flash('Login requested for OpenID="' + form.openid.data + '",remember_me=' + str(form.remember_me.data))
-        return redirect('/index')
+        session['remember_me'] = form.remember_me.data
+        return oid.try_login(form.openid.data, ask_for = ['nickname', 'email'])
     return render_template('login.html',
         title = 'Sign In',
         form = form,
