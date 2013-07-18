@@ -44,7 +44,7 @@ def login():
 
     # Following command conducts validation processing for submited form
     if form.validate_on_submit():
-        flash('Login requested for OpenID="' + form.openid.data + '",remember_me=' + str(form.remember_me.data))
+        # flash('Login requested for OpenID="' + form.openid.data + '",remember_me=' + str(form.remember_me.data))
         session['remember_me'] = form.remember_me.data
         return oid.try_login(form.openid.data, ask_for = ['nickname', 'email'])
     return render_template('login.html',
