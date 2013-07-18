@@ -73,9 +73,12 @@ def after_login(resp):
 
     return redirect(request.args.get('next') or url_for('index'))
 
-
-
 # Loads user from database
 @lm.user_loader
 def load_user(id):
     return User.query.get(int(id))
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
