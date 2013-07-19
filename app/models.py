@@ -59,6 +59,11 @@ class User(db.Model):
     def avatar(self, size):
         return 'http://www.gravatar.com/avatar/' + md5(self.email).hexdigest() + '?d=mm&s=' + str(size)
 
+    def unfollow(self, user):
+        if self.is_following(user):
+            self.followed.remove(user)
+            return self
+
     # Used fro debugging and structures how to print objects fo this class
     def __repr__(self):
         return '<User %r>' % (self.nickname)
