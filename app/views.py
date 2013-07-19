@@ -22,8 +22,9 @@ def before_request():
 
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
+@app.route('/index/<int:page>', methods = ['GET', 'POST'])
 @login_required # Restricts page access without login
-def index():
+def index(page = 1):
     form = PostForm()
 
     if form.validate_on_submit():
@@ -38,7 +39,6 @@ def index():
 
     return render_template("index.html", 
         title = 'Home', 
-        user = user,
         form = form,
         posts = posts)
 
