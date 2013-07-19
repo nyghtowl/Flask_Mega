@@ -18,6 +18,8 @@ class User(db.Model):
     def make_unique_nickname(nickname):
         if User.query.filter_by(nickname=nickname).first() == None:
             return nickname
+        
+        # If nickname exists then it changes it with number
         version = 2
         while True:
             new_nickname = nickname + str(version)
