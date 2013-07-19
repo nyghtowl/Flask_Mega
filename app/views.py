@@ -35,7 +35,7 @@ def index(page = 1):
         return redirect(url_for('index'))
 
     # Pulls posts for followed users
-    posts = g.user.followed_posts().paginate(1, 3, False).items
+    posts = g.user.followed_posts().paginate(page, POSTS_PER_PAGE, False).items
 
     return render_template("index.html", 
         title = 'Home', 
