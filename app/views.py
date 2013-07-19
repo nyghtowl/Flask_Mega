@@ -20,8 +20,8 @@ def before_request():
         db.session.add(g.user)
         db.session.commit()
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods = ['GET', 'POST'])
+@app.route('/index', methods = ['GET', 'POST'])
 @login_required # Restricts page access without login
 def index():
     form = PostForm()
