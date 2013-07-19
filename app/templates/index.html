@@ -9,9 +9,9 @@
       			<td>Say something</td>
       			<td>{{ form.post(size = 30, maxLength = 140) }}</td>
       			<td>
-      			{% for error in form.erros.post %}
+      			{% for error in form.errors.post %}
       				<span style = "color: red; ">[{{erro}}]</span><br>
-      			[% endfor %]
+      			{% endfor %}
       			</td>
       		</tr>
       		<tr>
@@ -26,6 +26,6 @@
     <p>
 		{{post.author.nickname}} says: <b>{{post.body}}</b>
 	</p>
-    {% endfor%}
+    {% endfor %}
   
 {% endblock %}
