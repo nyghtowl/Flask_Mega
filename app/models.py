@@ -46,7 +46,7 @@ class User(db.Model):
         return unicode(self.id)
 
     def avatar(self, size):
-        return 'http://www.gravatar.com/avatar' + md5(self.email).hexdigest() + '?d=mm&s' + str(size)
+        return 'http://www.gravatar.com/avatar/' + md5(self.email).hexdigest() + '?d=mm&s=' + str(size)
 
     # Used fro debugging and structures how to print objects fo this class
     def __repr__(self):
