@@ -69,7 +69,7 @@ class User(db.Model):
             self.followed.remove(user)
             return self
 
-    def is_following(self.user):
+    def is_following(self, user):
         return self.followed.filter(followers.c.followed_id == user.id).count() > 0
 
     # Used fro debugging and structures how to print objects fo this class
