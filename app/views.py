@@ -77,6 +77,11 @@ def after_login(resp):
         user = User(nickname = nickname, email = resp.email, role = ROLE_USER)
         db.session.add(user)
         db.session.commit()
+
+        # Make the user follow him/herself
+        db.sesssion.add(user.follow(user))
+        db.session.commit()
+
     remember_me = False
 
     # Check session remember_me and login user
