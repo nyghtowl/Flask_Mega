@@ -6,7 +6,7 @@ from config import basedir
 from app import app, db
 from app.models import User
 
-from datetime import datetime, timedata
+from datetime import datetime, timedelta
 from app.models import User, Post
 
 class TestCase(unittest.TestCase):
