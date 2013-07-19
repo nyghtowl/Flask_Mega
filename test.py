@@ -59,7 +59,7 @@ class TestCase(unittest.TestCase):
         assert u1.followed.first().nickname == 'susan'
         assert u2.followed.count() == 0
         assert u2.followers.count() == 1
-        assert u2.followers.first().nickname = 'john'
+        assert u2.followers.first().nickname == 'john'
 
         u = u1.unfollow(u2)
 
