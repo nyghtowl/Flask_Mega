@@ -11,6 +11,13 @@ from config import POSTS_PER_PAGE
 def load_user(id):
     return User.query.get(int(id))
 
+@app.route('/search', methods = ['POST'])
+@login_required
+def search():
+    if not g.search_form.validate_on_submit():
+        return redirect(url_for('index'))
+    return redirect(url_for('search_results', query = g.search_form.search.data))
+    
 @app.before_request
 def before_request():
     g.user = current_user
