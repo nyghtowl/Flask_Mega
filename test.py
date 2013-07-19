@@ -22,7 +22,7 @@ class TestCase(unittest.TestCase):
         u = User(nickname = 'john', email = 'john@example.com')
         avatar = u.avatar(128)
         expected = 'http://www.gravatar.com/avatar/d4c74594d841139328695756648b6bd6'
-        assert avatar[0:len(expected) == expected]
+        assert avatar[0:len(expected)] == expected
 
     def test_make_unique_nickname(self):
         u = User(nickname = 'john', email = 'john@example.com')
