@@ -100,16 +100,14 @@ def logout():
     return redirect(url_for('index'))
 
 @app.route('/user/<nickname>')
+@app.route('/user/<nickname>/<int:page>')
 @login_required # Restricts page access without login
-def user(nickname):
+def user(nickname, page = 1):
     user = User.query.filter_by(nickname = nickname).first()
     if user == None:
         flash('User' + nickname + 'not found.')
         return redirect(url_for('index'))
-    posts = [
-        { 'author': user, 'body': 'Test post #1' },
-        { 'author': user, 'body': 'Test post #1' }
-    ]
+    posts = user.posts.paginate(page, POSTS_PER_PAGE, False)
     return render_template("user.html", 
         user = user,
         posts = posts)
