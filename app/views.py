@@ -33,17 +33,9 @@ def index():
         flash('Your post is now live!')
         return redirect(url_for('index'))
 
-    posts = [#fake dictionary of posts
-    {
-        'author': {'nickname':'John'},
-        'body': 'Beautiful day in Portland'
-    },
-    {
-        'author': {'nickname':'John'},
-        'body': 'The Avengers movie was so cool!'
+    # Pulls posts for followed users
+    posts = g.user.followed_posts().all()
 
-    }
-    ]
     return render_template("index.html", 
         title = 'Home', 
         user = user,
