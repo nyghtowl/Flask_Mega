@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, session, url_for, request, g
 from flask.ext.login import login_user, logout_user, current_user, login_required
 from app import app, db, lm, oid
-from forms import LoginForm, EditForm
-from models import User, ROLE_USER, ROLE_ADMIN
+from forms import LoginForm, EditForm, PostForm
+from models import User, ROLE_USER, ROLE_ADMIN, Post
 from datetime import datetime
 
 # Loads user from database
@@ -24,7 +24,15 @@ def before_request():
 @app.route('/index')
 @login_required # Restricts page access without login
 def index():
-    user = g.user
+    form = PostForm()
+
+    if form.validate_on_submit():
+        post = Post(body =form.post.data, timestamp = datetime.utcnow(), authoer = g.user)
+        db.session.add(post)
+        db.session.commit()
+        flash('Your post is now live!')
+        return redirect(url_for('index'))
+
     posts = [#fake dictionary of posts
     {
         'author': {'nickname':'John'},
@@ -39,6 +47,7 @@ def index():
     return render_template("index.html", 
         title = 'Home', 
         user = user,
+        form = form,
         posts = posts)
 
  
