@@ -4,6 +4,7 @@ from app import app, db, lm, oid
 from forms import LoginForm, EditForm, PostForm
 from models import User, ROLE_USER, ROLE_ADMIN, Post
 from datetime import datetime
+from config import POSTS_PER_PAGE
 
 # Loads user from database
 @lm.user_loader
