@@ -28,3 +28,6 @@ ADMINS = ['you@example.com']
 
 # Pagination
 POSTS_PER_PAGE = 3
+
+# Open source full text seach engine
+WHOOSH_BASE = os.path.join(basedir, 'search.db')
