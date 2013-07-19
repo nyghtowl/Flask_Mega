@@ -24,7 +24,7 @@
 
     {% for post in posts.items %}
     <p>
-		{{post.author.nickname}} says: <b>{{post.body}}</b>
+		{% include 'post.html' %}
 	</p>
     {% endfor %}
     {% if posts.has_prev %}
