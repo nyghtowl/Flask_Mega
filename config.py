@@ -19,7 +19,7 @@ OPENID_PROVIDERS = [
 
 # Mail server settings
 MAIL_SERVER = 'localhost'
-MAIL_POST = 25
+MAIL_PORT = 25
 MAIL_USERNAME = None 
 MAIL_PASSWORD = None
 
