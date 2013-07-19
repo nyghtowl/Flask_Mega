@@ -128,6 +128,30 @@ def edit():
         form.about_me.data = g.user.about_me
     return render_template('edit.html', form = form)
 
+@app.route('/follow/<nickname>')
+def follow(nickname):
+    user = User.query.filter_by(nickname = nickname).first()
+    if user == None:
+        flash('User ' + nickname + ' not found.')
+        return redirect(url_for('index'))
+
+    # Even though we set user as their own follower, they can't choose that
+    if user == g.user:
+        flash('You can\'t follow yourself!')
+        return redirect(url_for('user', nickname = nickname))
+
+    u = g.user.follow(user)
+
+    if u is None:
+        flash('Cannot follow' + nickname + '.')
+        return redirect(url_for('user', nickname = nickname))
+
+    db.session.add(u)
+    db.session.commit()
+
+    flash('You are now following' + nickname + '.')
+    return redirect(url_for('user', nickname = nickname))
+
 @app.errorhandler(404)
 def internal_error(error):
     return render_template('404.html'), 404
