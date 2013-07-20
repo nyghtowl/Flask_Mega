@@ -1,6 +1,8 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+GMAIL_PSSWORD = os.environ.get('GMAIL_PSSWORD')
+
 # DB file path
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 # Stores migrate data files
@@ -20,11 +22,11 @@ OPENID_PROVIDERS = [
 # Mail server settings
 MAIL_SERVER = 'localhost'
 MAIL_PORT = 25
-MAIL_USERNAME = None 
-MAIL_PASSWORD = None
+MAIL_USERNAME = learn.flask
+MAIL_PASSWORD = GMAIL_PSSWORD
 
 # Administrator list
-ADMINS = ['you@example.com']
+ADMINS = ['learn.flask@gmail.com']
 
 # Pagination
 POSTS_PER_PAGE = 3
