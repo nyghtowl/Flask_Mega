@@ -46,7 +46,7 @@ def index(page = 1):
     form = PostForm()
 
     if form.validate_on_submit():
-        post = Post(body =form.post.data, timestamp = datetime.utcnow(), authoer = g.user)
+        post = Post(body =form.post.data, timestamp = datetime.utcnow(), author = g.user)
         db.session.add(post)
         db.session.commit()
         flash('Your post is now live!')
