@@ -98,7 +98,7 @@ def after_login(resp):
         db.session.commit()
 
         # Make the user follow him/herself
-        db.sesssion.add(user.follow(user))
+        db.session.add(user.follow(user))
         db.session.commit()
 
     remember_me = False
