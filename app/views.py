@@ -3,6 +3,7 @@ from flask.ext.login import login_user, logout_user, current_user, login_require
 from app import app, db, lm, oid
 from forms import LoginForm, EditForm, PostForm, SearchForm
 from models import User, ROLE_USER, ROLE_ADMIN, Post
+from emails import follower_notification
 from datetime import datetime
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS
 
@@ -187,6 +188,14 @@ def unfollow(nickname):
     db.session.add(u)
     db.session.commit()
     flash('You have stopped following' + nickname + '.')
+    return redirect(url_for('user', nickname = nickname))
+
+@app.route('/follow/<nickcname>')
+@login_required
+def follow(nickname):
+    user = User.query.filter_by(nickname = nickname).first()
+    #...
+    follower_notification(user, g.user)
     return redirect(url_for('user', nickname = nickname))
 
 @app.errorhandler(404)
