@@ -145,6 +145,7 @@ def edit():
         form.about_me.data = g.user.about_me
     return render_template('edit.html', form = form)
 
+
 @app.route('/follow/<nickname>')
 def follow(nickname):
     user = User.query.filter_by(nickname = nickname).first()
@@ -167,6 +168,7 @@ def follow(nickname):
     db.session.commit()
 
     flash('You are now following' + nickname + '.')
+    follower_notification(user, g.user)
     return redirect(url_for('user', nickname = nickname))
 
 @app.route('/unfollow/<nickname>')
@@ -190,13 +192,7 @@ def unfollow(nickname):
     flash('You have stopped following' + nickname + '.')
     return redirect(url_for('user', nickname = nickname))
 
-@app.route('/follow/<nickcname>')
-@login_required
-def follow(nickname):
-    user = User.query.filter_by(nickname = nickname).first()
-    #...
-    follower_notification(user, g.user)
-    return redirect(url_for('user', nickname = nickname))
+
 
 @app.errorhandler(404)
 def internal_error(error):
