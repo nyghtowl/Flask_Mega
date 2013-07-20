@@ -22,7 +22,7 @@ OPENID_PROVIDERS = [
 # Mail server settings
 MAIL_SERVER = 'localhost'
 MAIL_PORT = 25
-MAIL_USERNAME = learn.flask
+MAIL_USERNAME = 'learn.flask'
 MAIL_PASSWORD = GMAIL_PSSWORD
 
 # Administrator list
