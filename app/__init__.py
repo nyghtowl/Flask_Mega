@@ -2,6 +2,7 @@ from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
 from flask.ext.openid import OpenID
+from flask.ext.mail import Mail
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 import os
 
@@ -16,6 +17,8 @@ lm.init_app(app)
 lm.login_view = 'login' # View that logs users in
 
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
+
+mail = Mail(app)
 
 from app import views, models
 
