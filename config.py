@@ -20,8 +20,10 @@ OPENID_PROVIDERS = [
     ]
 
 # Mail server settings
-MAIL_SERVER = 'localhost'
-MAIL_PORT = 25
+MAIL_SERVER = 'smtp.googlemail.com'
+MAIL_PORT = 465
+MAIL_USE_TLS = False
+MAIL_USE_SSL = True
 MAIL_USERNAME = 'learn.flask'
 MAIL_PASSWORD = GMAIL_PSSWORD
 
