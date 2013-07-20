@@ -23,10 +23,11 @@
     </form>
 
     {% for post in posts.items %}
-    <p>
-		{% include 'post.html' %}
-	</p>
+      <p>
+  		  {% include 'post.html' %}
+  	  </p>
     {% endfor %}
+
     {% if posts.has_prev %}
     	<a href="{{ url_for('index', page = posts.prev_num) }}"><< Newer posts</a>
     {% else %}
