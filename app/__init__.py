@@ -8,8 +8,6 @@ import os
 app = Flask(__name__)
 app.config.from_object('config')
 
-from app import views, models
-
 # Set db constant associated to SQLAlchemy
 db = SQLAlchemy(app)
 
@@ -18,6 +16,8 @@ lm.init_app(app)
 lm.login_view = 'login' # View that logs users in
 
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
+
+from app import views, models
 
 if not app.debug:
     import logging
