@@ -4,9 +4,8 @@ from app import app, db, lm, oid
 from forms import LoginForm, EditForm, PostForm, SearchForm
 from models import User, ROLE_USER, ROLE_ADMIN, Post
 from datetime import datetime
-from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS
-
 from emails import follower_notification
+from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS
 
 # Loads user from database
 @lm.user_loader
