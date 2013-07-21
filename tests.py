@@ -1,12 +1,10 @@
 #!flask/bin/python
 import os
 import unittest
+from datetime import datetime, timedelta
 
 from config import basedir
 from app import app, db
-from app.models import User
-
-from datetime import datetime, timedelta
 from app.models import User, Post
 
 class TestCase(unittest.TestCase):
@@ -14,7 +12,7 @@ class TestCase(unittest.TestCase):
         app.config['TESTING'] = True
         app.config['CSRF_ENABLED'] = False
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'test.db')
-        self.app = app.test_client()
+        # self.app = app.test_client()
         db.create_all()
 
     def tearDown(self):
