@@ -15,7 +15,7 @@
 		{% if user.last_seen %}
 			<p><em>Last seen on: {{ user.last_seen }}</em></p>
 		{% endif %}
-		<p>Followers: {{ user.followers.count() }} | Following {{ user.followed.count() }} |
+		<p>Followers: {{ user.followers.count() }} | Following {{ user.followed.count() - 1 }} |
 		<!-- Conditional makes sure only that user can edit her/his profile-->
 		{% if user.id == g.user.id %}
 			<a href="{{ url_for('edit') }}">Edit your profile</a>
