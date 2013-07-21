@@ -3,6 +3,7 @@ from flask.ext.mail import Message
 from app import mail
 from config import ADMINS
 from threading import Thread
+from decorators import async
 
 @async
 def send_async_email(msg):
@@ -13,8 +14,7 @@ def send_email(subject, sender, recipients, text_body, html_body):
     msg = Message(subject, sender = sender, recipients = recipients)
     msg.body = text_body
     msg.html = html_body
-    thr = Thread(target = send_async_email, args = [msg])
-    thr.start()
+    send_async_email(msg)
 
 # Emails followers
 def follower_notification(followed, follower):
