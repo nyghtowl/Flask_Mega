@@ -1,4 +1,7 @@
+#_*_ coding: utf-8 _*_
+
 import os
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 GMAIL_PSSWORD = os.environ.get('GMAIL_PSSWORD')
@@ -29,10 +32,16 @@ MAIL_PASSWORD = GMAIL_PSSWORD
 # Administrator list
 ADMINS = ['learn.flask@gmail.com']
 
-# Pagination
-POSTS_PER_PAGE = 3
-
 # Open source full text seach engine
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 
+# Pagination
+POSTS_PER_PAGE = 3
+
 MAX_SEARCH_RESULTS = 50
+
+# Available languages
+LANGUAGES = {
+    'en': 'English'
+    'es': 'Espanol'
+}
