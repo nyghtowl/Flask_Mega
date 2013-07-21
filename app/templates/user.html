@@ -26,6 +26,9 @@
 		{% endif %}
 		</p>
 	</div>
+	{% for post in posts.items %}
+    	{% include 'post.html' %}
+	{% endfor %}
     <ul class="pager">
       {% if posts.has_prev %}
       	 <li class="previous"><a href="{{ url_for('index', page = posts.prev_num) }}"> Newer posts</a></li>
