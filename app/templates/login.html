@@ -19,7 +19,7 @@
 			<label class="control-label" for="openid">Or enter your OpenID here:</label>
 			<div class="controls">
 				{{ form.openid(size=80, class="span4") }}
-				{% for error in form.erros.openid %}
+				{% for error in form.errors.openid %}
 					<span class="help-inline">[{{error}}]</span>
 				{% endfor %}
 			</div>
