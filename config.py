@@ -42,6 +42,6 @@ MAX_SEARCH_RESULTS = 50
 
 # Available languages
 LANGUAGES = {
-    'en': 'English'
+    'en': 'English',
     'es': 'Espanol'
 }
