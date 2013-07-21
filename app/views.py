@@ -25,6 +25,15 @@ def before_request():
         db.session.commit()
         g.search_form = SearchForm()
 
+@app.errorhandler(404)
+def internal_error(error):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_error(error):
+    db.session.rollback()
+    return render_template('500.html'), 500
+    
 @app.route('/', methods = ['GET', 'POST'])
 @app.route('/index', methods = ['GET', 'POST'])
 @app.route('/index/<int:page>', methods = ['GET', 'POST'])
@@ -194,12 +203,3 @@ def search_results(query):
         query = query,
         results = results)
 
-
-@app.errorhandler(404)
-def internal_error(error):
-    return render_template('404.html'), 404
-
-@app.errorhandler(500)
-def internal_error(error):
-    db.session.rollback()
-    return render_template('500.html'), 500
