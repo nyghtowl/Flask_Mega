@@ -4,6 +4,7 @@ from app import mail
 from config import ADMINS
 from threading import Thread
 
+@async
 def send_async_email(msg):
     mail.send(msg)
 
