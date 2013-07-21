@@ -3,10 +3,11 @@
 
 {% block content %}
     <h1>Hi, {{ g.user.nickname }}!</h1>
+    {% include 'flash.html' %}
     <div class="well">
       <form class="form-horizontal" action="" method="post" name="post">
       	{{form.hidden_tag()}}
-      	<div class="control-group{% if form.error.post %}error{% endif %}">
+      	<div class="control-group{% if form.errors.post %}error{% endif %}">
           <div class="class-label" for="post">Say something:</label>
       			{{ form.post(size = 30, maxLength = 140) }}
       			{% for error in form.errors.post %}
