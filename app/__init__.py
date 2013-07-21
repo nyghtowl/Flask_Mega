@@ -6,11 +6,12 @@ from flask.ext.openid import OpenID
 from flask.ext.mail import Mail
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 from momentjs import momentjs
+from flask.ext.babel import Babel
 
 app = Flask(__name__)
 app.config.from_object('config')
 
-app.jinja_env.globals['momentjs'] = momentjs
+
 # Set db constant associated to SQLAlchemy
 db = SQLAlchemy(app)
 
@@ -21,6 +22,10 @@ lm.login_view = 'login' # View that logs users in
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
 mail = Mail(app)
+
+app.jinja_env.globals['momentjs'] = momentjs
+
+babel = Babel(app)
 
 if not app.debug:
     import logging
