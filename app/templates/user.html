@@ -13,7 +13,7 @@
 			<p>{{ user.about_me }}</p>
 		{% endif %}
 		{% if user.last_seen %}
-			<p><em>Last seen on: {{ user.last_seen }}</em></p>
+			<p><em>Last seen on: {{ momentjs(user.last_seen).calendar() }}</em></p>
 		{% endif %}
 		<p>Followers: {{ user.followers.count() }} | Following {{ user.followed.count() - 1 }} |
 		<!-- Conditional makes sure only that user can edit her/his profile-->
