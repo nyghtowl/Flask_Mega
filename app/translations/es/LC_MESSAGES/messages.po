@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2013-07-21 20:09-0700\n"
-"PO-Revision-Date: 2013-07-21 21:23-0800\n"
+"PO-Revision-Date: 2013-07-21 21:36-0800\n"
 "Last-Translator: \n"
 "Language-Team:  <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -141,7 +141,7 @@ msgstr "Entradas más antiguas"
 
 #: app/templates/login.html:6
 msgid "Please Sign In"
-msgstr "Please Sign In"
+msgstr "Favor Entrar"
 
 #: app/templates/login.html:12
 msgid "Click on your OpenID provider below:"
