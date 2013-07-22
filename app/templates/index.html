@@ -11,7 +11,7 @@
           <label class="control-label" for="post">{{ _('Say something:') }}</label>
       			{{ form.post(size = 30, maxLength = 140) }}
       			{% for error in form.errors.post %}
-      				<span style = "color: red; ">[{{erro}}]</span><br>
+      				<span style = "color: red; ">[{{error}}]</span><br>
       			{% endfor %}
           </div>
         </div>
@@ -30,7 +30,7 @@
 
     <ul class="pager">
       {% if posts.has_prev %}
-      	 <li class="previous"><a href="{{ url_for('index', page = posts.prev_num) }}"> Newer posts</a></li>
+      	 <li class="previous"><a href="{{ url_for('index', page = posts.prev_num) }}">{{ _('Newer posts') }}</a></li>
       {% else %}
       	<li class="previous disabled"><a href="#">{{ _('Newer posts') }}</a></li>
       {% endif %}
