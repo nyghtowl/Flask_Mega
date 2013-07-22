@@ -18,6 +18,7 @@ db = SQLAlchemy(app)
 lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'login' # View that logs users in
+lm.login_message = lazy_gettext('Please log in to access this page.')
 
 oid = OpenID(app, os.path.join(basedir, 'tmp'))
 
