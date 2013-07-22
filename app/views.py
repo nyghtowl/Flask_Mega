@@ -161,7 +161,7 @@ def follow(nickname):
     u = g.user.follow(user)
 
     if u is None:
-        flash(gettext('Cannot follow %(nickname)s.', nickname = nickname)
+        flash(gettext('Cannot follow %(nickname)s.', nickname = nickname))
         return redirect(url_for('user', nickname = nickname))
 
     db.session.add(u)
@@ -175,7 +175,7 @@ def follow(nickname):
 def unfollow(nickname):
     user = User.query.filter_by(nickname = nickname).first()
     if user == None:
-        flash(gettext('User %(nickname)s not found.', nickname = nickname)
+        flash(gettext('User %(nickname)s not found.', nickname = nickname))
         return redirect(url_for('index'))
 
     if user == g.user:
@@ -185,11 +185,11 @@ def unfollow(nickname):
     u = g.user.unfollow(user)
 
     if u is None:
-        flash(gettext('Cannot unfollow %(nickname)s.', nickname = nickname)
+        flash(gettext('Cannot unfollow %(nickname)s.', nickname = nickname))
         return redirect(url_for('user', nickname = nickname))
     db.session.add(u)
     db.session.commit()
-    flash(gettext('You have stopped following %(nickname)s.' nickname = nickname)
+    flash(gettext('You have stopped following %(nickname)s.', nickname = nickname))
     return redirect(url_for('user', nickname = nickname))
 
 @app.route('/search', methods = ['POST'])
