@@ -12,7 +12,7 @@ from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
 def load_user(id):
     return User.query.get(int(id))
 
-@babel.localeelector
+@babel.localeselector
 def get_locale():
     return request.accept_lanuages.best_match(LANGUAGES.keys())
 
