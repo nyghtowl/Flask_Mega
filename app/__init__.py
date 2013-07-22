@@ -6,7 +6,7 @@ from flask.ext.openid import OpenID
 from flask.ext.mail import Mail
 from config import basedir, ADMINS, MAIL_SERVER, MAIL_PORT, MAIL_USERNAME, MAIL_PASSWORD
 from momentjs import momentjs
-from flask.ext.babel import Babel
+from flask.ext.babel import Babel, lazy_gettext
 
 app = Flask(__name__)
 app.config.from_object('config')
