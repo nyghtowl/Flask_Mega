@@ -31,10 +31,10 @@
 	    	{% include 'post.html' %}
 	    </p>
 	{% endfor %}
-	
+
     <ul class="pager">
       {% if posts.has_prev %}
-      	 <li class="previous"><a href="{{ url_for('index', page = posts.prev_num) }}"> Newer posts</a></li>
+      	 <li class="previous"><a href="{{ url_for('index', page = posts.prev_num) }}">{{ _('Newer posts') }}</a></li>
       {% else %}
       	<li class="previous disabled"><a href="#">{{ _('Newer posts') }}</a></li>
       {% endif %}
