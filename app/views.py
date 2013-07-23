@@ -24,8 +24,8 @@ def get_locale():
 def translate():
     return jsonify({
         'text': microsoft_translate(
-            request.form['text']
-            request.form['sourceLang']
+            request.form['text'],
+            request.form['sourceLang'],
             request.form['destLang'])
         })
 
