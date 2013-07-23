@@ -1,4 +1,6 @@
 #!flask/bin/python
+# -*- coding: utf8 -*-
+
 import os
 import unittest
 from datetime import datetime, timedelta
