@@ -19,16 +19,6 @@ def load_user(id):
 def get_locale():
     return request.accept_languages.best_match(LANGUAGES.keys())
 
-@app.route('/translate', methods = ['POST'])
-@login_required
-def translate():
-    return jsonify({
-        'text': microsoft_translate(
-            request.form['text'],
-            request.form['sourceLang'],
-            request.form['destLang'])
-        })
-
 @app.before_request
 def before_request():
     g.user = current_user
@@ -226,3 +216,27 @@ def search_results(query):
         query = query,
         results = results)
 
+@app.route('/translate', methods = ['POST'])
+@login_required
+def translate():
+    return jsonify({
+        'text': microsoft_translate(
+            request.form['text'],
+            request.form['sourceLang'],
+            request.form['destLang'])
+        })
+
+@app.route('/delete/<int:id>')
+@login_required
+def delete(id):
+    post = Post.query.get(id)
+    if post == None:
+        flash('Post not found.')
+        return redirect(url_for('index'))
+    if post.author.id != g.user.id:
+        flash('You cannot delete this post.')
+        return redirect(url_for('index'))
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted.')
+    return redirect(url_for('index'))
