@@ -1,5 +1,7 @@
-from hashlib import md5
 from app import db, app
+
+# Secure hash
+from hashlib import md5
 import flask.ext.whooshalchemy as whooshalchemy
 import re
 
