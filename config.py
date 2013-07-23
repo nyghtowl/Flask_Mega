@@ -6,6 +6,10 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 GMAIL_PSSWORD = os.environ.get('GMAIL_PSSWORD')
 
+# MS translation service
+MS_TRANSLATOR_CLIENT_ID = os.environ.get('MS_ID')
+MS_TRANSLATOR_CLIENT_SECRET = os.environ.get('MS_SECRET')
+
 # DB file path
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 # Stores migrate data files
