@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-07-22 18:54-0700\n"
-"PO-Revision-Date: 2013-07-22 18:58-0800\n"
+"POT-Creation-Date: 2013-07-22 19:23-0700\n"
+"PO-Revision-Date: 2013-07-22 19:24-0800\n"
 "Last-Translator: \n"
 "Language-Team:  <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
@@ -33,6 +33,14 @@ msgstr ""
 #: app/forms.py:26
 msgid "This nickname is already in use. Please choose another one."
 msgstr "Este apodo ya está en uso. Por favor elija otro."
+
+#: app/translate.py:8
+msgid "Error: translation service not configured."
+msgstr "Error: El servicio de traducción no configurado."
+
+#: app/translate.py:34
+msgid "Error: Unexpected error."
+msgstr "Error: Error inesperado."
 
 #: app/views.py:59
 msgid "Your post is now live!"
