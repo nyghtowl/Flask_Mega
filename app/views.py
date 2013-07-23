@@ -6,6 +6,7 @@ from forms import LoginForm, EditForm, PostForm, SearchForm
 from models import User, ROLE_USER, ROLE_ADMIN, Post
 from datetime import datetime
 from emails import follower_notification
+from guess_language import guessLanguage
 from config import POSTS_PER_PAGE, MAX_SEARCH_RESULTS, LANGUAGES
 
 # Loads user from database
@@ -46,7 +47,13 @@ def index(page = 1):
     form = PostForm()
 
     if form.validate_on_submit():
-        post = Post(body =form.post.data, timestamp = datetime.utcnow(), author = g.user)
+        language = guessLanguage(form.post.data)
+        if language == "UNKNOWN" or len(language) > 5:
+            language = ''
+        post = Post(body =form.post.data, 
+            timestamp = datetime.utcnow(), 
+            author = g.user,
+            language = language)
         db.session.add(post)
         db.session.commit()
         flash(gettext('Your post is now live!'))
