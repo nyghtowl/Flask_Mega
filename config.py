@@ -2,21 +2,22 @@
 
 import os
 
+
+CSRF_ENABLED = True
+SECRET_KEY = 'you-will-never-guess'
+
 basedir = os.path.abspath(os.path.dirname(__file__))
-
-GMAIL_PSSWORD = os.environ.get('GMAIL_PSSWORD')
-
-# MS translation service
-MS_TRANSLATOR_CLIENT_ID = os.environ.get('MS_ID')
-MS_TRANSLATOR_CLIENT_SECRET = os.environ.get('MS_SECRET')
 
 # DB file path
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 # Stores migrate data files
 SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_respository')
 
-CSRF_ENABLED = True
-SECRET_KEY = 'you-will-never-guess'
+# Use get_debug_queries function
+SQLALCHEMY_RECORD_QUERIES = True
+
+# Threashold for slow loading (in seconds)
+DATABASE_QUERY_TIMEOUT = 0.5
 
 OPENID_PROVIDERS = [
 	{ 'name': 'Google', 'url': 'https://www.google.com/accounts/o8/id' },
@@ -36,6 +37,8 @@ MAIL_PASSWORD = GMAIL_PSSWORD
 # Administrator list
 ADMINS = ['learn.flask@gmail.com']
 
+GMAIL_PSSWORD = os.environ.get('GMAIL_PSSWORD')
+
 # Open source full text seach engine
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 
@@ -49,3 +52,7 @@ LANGUAGES = {
     'en': 'English',
     'es': 'Espanol'
 }
+
+# MS translation service
+MS_TRANSLATOR_CLIENT_ID = os.environ.get('MS_ID')
+MS_TRANSLATOR_CLIENT_SECRET = os.environ.get('MS_SECRET')
