@@ -139,5 +139,20 @@ class TestCase(unittest.TestCase):
         assert microsoft_translate(u'English', 'en', 'es') == u'Inglés'
         assert microsoft_translate(u'Español', 'es', 'en') == u'Spanish'
 
+    def test_delete_post(self):
+        # Create a user and a post
+        u = User(nickname = 'john', email = 'john@example.com')
+        p = Post(body = 'test post', author = u, timestamp = datetime.utcnow())
+        db.session.add(u)
+        db.session.add(p)
+        db.session.commit()
+        # Query the post and destroy the session
+        p = Post.query.get(1)
+        db.session.remove()
+        # Delete the post using a new session
+        db.session = db.create_scoped_session()
+        db.session.delete(p)
+        db.session.commit()
+
 if __name__ == '__main__':
     unittest.main()
