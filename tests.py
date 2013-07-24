@@ -11,7 +11,7 @@ from app.models import User, Post
 from app.translate import microsoft_translate
 from coverage import coverage
 
-cov = coverage(branch = True, omit ['flask/', 'tests.py'])
+cov = coverage(branch = True, omit = ['flask/*', 'tests.py'])
 cov.start()
 
 class TestCase(unittest.TestCase):
