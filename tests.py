@@ -158,6 +158,22 @@ class TestCase(unittest.TestCase):
         db.session.delete(p)
         db.session.commit()
 
+    def test_user(self):
+        # Make valid nicknames
+        n = User.make_valid_nickname('John_123')
+        assert n = 'John_123'
+        n= User.make_valid_nickname('John[123]\n')
+        assert n = 'John_123'
+
+        # Create a user
+        u = User(nickname = 'john', email = 'john@example.com')
+        db.session.add(u)
+        db.session.commit()
+        assert u.is_authenticated() == True
+        assert u.is_active() == True
+        assert u.is_anonymouse() == False
+        assert u.id == int(u.get_id())
+
 if __name__ == '__main__':
     try:
         unittest.main()
