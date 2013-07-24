@@ -27,6 +27,8 @@ OPENID_PROVIDERS = [
     { 'name': 'MyOpenID', 'url': 'https://www.myopenid.com' }
     ]
 
+GMAIL_PSSWORD = os.environ.get('GMAIL_PSSWORD')
+
 # Mail server settings
 MAIL_SERVER = 'smtp.gmail.com'
 MAIL_PORT = 465
@@ -36,8 +38,6 @@ MAIL_PASSWORD = GMAIL_PSSWORD
 
 # Administrator list
 ADMINS = ['learn.flask@gmail.com']
-
-GMAIL_PSSWORD = os.environ.get('GMAIL_PSSWORD')
 
 # Open source full text seach engine
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
