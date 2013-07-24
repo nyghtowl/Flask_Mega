@@ -1,18 +1,21 @@
 #!flask/bin/python
 # -*- coding: utf8 -*-
 
-import os
-import unittest
-from datetime import datetime, timedelta
-
-from config import basedir
-from app import app, db
-from app.models import User, Post
-from app.translate import microsoft_translate
 from coverage import coverage
 
 cov = coverage(branch = True, omit = ['flask/*', 'tests.py'])
 cov.start()
+
+import os
+import unittest
+from datetime import datetime, timedelta
+
+from app import app, db
+from app.models import User, Post
+from app.translate import microsoft_translate
+
+from config import basedir
+
 
 class TestCase(unittest.TestCase):
     def setUp(self):
