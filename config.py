@@ -11,7 +11,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 # DB file path
 SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'app.db')
 # Stores migrate data files
-SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_respository')
+SQLALCHEMY_MIGRATE_REPO = os.path.join(basedir, 'db_repository')
 
 # Use get_debug_queries function
 SQLALCHEMY_RECORD_QUERIES = True
