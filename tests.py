@@ -161,9 +161,9 @@ class TestCase(unittest.TestCase):
     def test_user(self):
         # Make valid nicknames
         n = User.make_valid_nickname('John_123')
-        assert n = 'John_123'
+        assert n == 'John_123'
         n= User.make_valid_nickname('John[123]\n')
-        assert n = 'John_123'
+        assert n == 'John_123'
 
         # Create a user
         u = User(nickname = 'john', email = 'john@example.com')
