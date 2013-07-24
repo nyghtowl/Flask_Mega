@@ -42,6 +42,9 @@ ADMINS = ['learn.flask@gmail.com']
 # Open source full text seach engine
 WHOOSH_BASE = os.path.join(basedir, 'search.db')
 
+# Whoosh does not work on Heroku
+WHOOSH_ENABLED = os.environ.get('HEROKU') is None
+
 # Pagination
 POSTS_PER_PAGE = 3
 
