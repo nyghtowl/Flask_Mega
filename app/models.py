@@ -3,7 +3,7 @@ from app import db, app
 # Secure hash
 from hashlib import md5
 from config import WHOOSH_ENABLED #suppress full txt search if on Heroku
-if WHOOSH_ENABLED
+if WHOOSH_ENABLED:
     import flask.ext.whooshalchemy as whooshalchemy
     whooshalchemy.whoosh_index(app, Post)
 import re
