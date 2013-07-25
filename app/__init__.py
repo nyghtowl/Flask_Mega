@@ -51,7 +51,7 @@ if not app.debug and os.environ.get('HEROKU') is None:
 if os.environ.get('HEROKU') is not None:
     import logging
     stream_handler = logging.StreamHandler()
-    app.logger.addHandler(steam_handler)
+    app.logger.addHandler(stream_handler)
     app.logger.setLevel(logging.INFO)
     app.logger.info('microblog startup')
 
